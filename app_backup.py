@@ -4,7 +4,7 @@ import os
 
 app = Flask(__name__)
 
-DATABASE = "kansakri.db"
+DATABASE = "assign2.db"
 UPLOAD_FOLDER = "uploads"
 
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER

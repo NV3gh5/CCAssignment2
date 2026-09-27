@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Details</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Registration Successful</h1>
+
+    <h2>User Details</h2>
+
+    <p>
+        <strong>Username:</strong>
+        {{ user['username'] }}
+    </p>
+
+    <p>
+        <strong>First Name:</strong>
+        {{ user['firstname'] }}
+    </p>
+
+    <p>
+        <strong>Last Name:</strong>
+        {{ user['lastname'] }}
+    </p>
+
+    <p>
+        <strong>Email:</strong>
+        {{ user['email'] }}
+    </p>
+
+    <p>
+        <strong>Address:</strong>
+        {{ user['address'] }}
+    </p>
+
+    <hr>
+
+    <h2>Upload Limerick File</h2>
+
+    <form
+        method="POST"
+        action="{{ url_for('upload', username=user['username']) }}"
+        enctype="multipart/form-data">
+
+        <input type="file" name="file" required>
+
+        <button type="submit">
+            Upload File
+        </button>
+
+    </form>
+
+    {% if user['filename'] %}
+
+        <hr>
+
+        <h2>File Information</h2>
+
+        <p>
+            <strong>Filename:</strong>
+            {{ user['filename'] }}
+        </p>
+
+        <p>
+            <strong>Word Count:</strong>
+            {{ user['word_count'] }}
+        </p>
+
+        <a href="{{ url_for('download',
+                    filename=user['filename']) }}">
+            <button>Download File</button>
+        </a>
+
+    {% endif %}
+
+    <hr>
+
+    <a href="/login">
+        Login as another user
+    </a>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,8 @@
+assign2.db
+*.db
+uploads/
+__pycache__/
+*.pyc
+venv/
+.env
+app.py
